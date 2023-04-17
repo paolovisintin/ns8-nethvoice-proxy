@@ -10,11 +10,13 @@ repobase="ghcr.io/nethesis"
 # Configure the image name
 reponame="nethvoice-proxy"
 
+tag="${IMAGETAG:-latest}"
+
 make build
-images+=("${repobase}/${reponame}-postgres")
-images+=("${repobase}/${reponame}-kamailio")
-images+=("${repobase}/${reponame}-redis")
-images+=("${repobase}/${reponame}-rtpengine")
+images+=("${repobase}/${reponame}-postgres:${tag}")
+images+=("${repobase}/${reponame}-kamailio:${tag}")
+images+=("${repobase}/${reponame}-redis:${tag}")
+images+=("${repobase}/${reponame}-rtpengine:${tag}")
 
 # Setup CI when pushing to Github.
 # Warning! docker::// protocol expects lowercase letters (,,)
@@ -24,6 +26,6 @@ if [[ -n "${CI}" ]]; then
 else
     # Just print info for manual push
     printf "Publish the images with:\n\n"
-    for image in "${images[@],,}"; do printf "  buildah push %s docker://%s:%s\n" "${image}" "${image}" "${IMAGETAG:-latest}" ; done
+    for image in "${images[@],,}"; do printf "  buildah push %s docker://%s:%s\n" "${image}" "${image}" "${tag}" ; done
     printf "\n"
 fi

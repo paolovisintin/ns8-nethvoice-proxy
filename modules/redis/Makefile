@@ -1,7 +1,7 @@
-REGISTRY_URL = ghcr.io/nethesis/nethvoice-proxy
-APP_NAME = redis
+REGISTRY_URL = ghcr.io/nethesis
+APP_NAME = nethvoice-proxy-redis
 REGISTRY_NAME = ${REGISTRY_URL}/$(APP_NAME)
-TODAY = $(shell date '+%Y%m%d')
+TODAY = ${IMAGETAG}
 
 
 default:

@@ -1,7 +1,7 @@
-REGISTRY_URL = ghcr.io/nethvoice-proxy
-APP_NAME = kamailio
+REGISTRY_URL = ghcr.io/nethesis
+APP_NAME = nethvoice-proxy-kamailio
 REGISTRY_NAME = ${REGISTRY_URL}/$(APP_NAME)
-TODAY = $(shell date '+%Y%m%d')
+TODAY = ${IMAGETAG}
 
 default:
 	cat Makefile

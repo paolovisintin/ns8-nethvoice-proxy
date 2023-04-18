@@ -12,11 +12,11 @@ reponame="nethvoice-proxy"
 
 tag="${IMAGETAG:-latest}"
 
-make build
-images+=("${repobase}/${reponame}-postgres:${tag}")
-images+=("${repobase}/${reponame}-kamailio:${tag}")
-images+=("${repobase}/${reponame}-redis:${tag}")
-images+=("${repobase}/${reponame}-rtpengine:${tag}")
+make IMAGETAG=${tag} build
+images+=("${repobase}/${reponame}-postgres")
+images+=("${repobase}/${reponame}-kamailio")
+images+=("${repobase}/${reponame}-redis")
+images+=("${repobase}/${reponame}-rtpengine")
 
 # Setup CI when pushing to Github.
 # Warning! docker::// protocol expects lowercase letters (,,)
